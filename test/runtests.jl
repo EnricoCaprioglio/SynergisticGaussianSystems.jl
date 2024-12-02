@@ -12,3 +12,6 @@ end
 
 # use the following from the REPL to test the whole package
 # (SynergisticGaussianSystems) pkg> test SynergisticGaussianSystems.jl
+
+# TODO:
+# synch with TravisCI, appveyor, coverall etc so they stop saying it doesn't work

@@ -13,3 +13,9 @@
 # )
 
 # generate("SynergisticGaussianSystems.jl", t)
+
+# to add dependencies, do the following:
+# ]
+# pkg> activate SynergisticGaussianSystems.jl
+# (SynergisticGaussianSystems.jl) pkg> add PackageName
+# 
