@@ -1,10 +1,9 @@
 # Documentation: https://github.com/JuliaCI/Appveyor.jl
 environment:
-  COVERALLS_REPO_TOKEN:
+  COVERALLS_TOKEN:
     secure: 3wOFkOfbSJiJ1XDrrjdfGcP6AIQs8eyitPJfhAGf7q0uo0260hQmjx98W9fINp8D
   matrix:
     - julia_version: 1.11
-    # - julia_version: 1.6
     - julia_version: nightly
 platform:
   - x64
