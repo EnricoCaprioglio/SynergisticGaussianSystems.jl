@@ -25,7 +25,7 @@ notifications:
 install:
   - ps: iex ((new-object net.webclient).DownloadString("https://raw.githubusercontent.com/JuliaCI/Appveyor.jl/version-1/bin/install.ps1"))
 build_script:
-  - julia --code-coverage test/runtests.jl
+  - C:\julia\bin\julia -e "using Pkg; Pkg.test("SynergisticGaussianSystems", coverage=true)"
   - echo "%JL_BUILD_SCRIPT%"
   - C:\julia\bin\julia -e "%JL_BUILD_SCRIPT%"
 test_script:
