@@ -3,9 +3,7 @@ using Test
 using Distributions
 
 # import here functions to test that are not exported in SynergisticGaussianSystems.jl
-import SynergisticGaussianSystems._bitstring_to_bitvec
-import SynergisticGaussianSystems._bitvec_to_bitstring
-import SynergisticGaussianSystems._vec_to_cov
+import SynergisticGaussianSystems: _bitstring_to_bitvec, _bitvec_to_bitstring, _vec_to_cov
 
 @testset "Gaussian_IT.jl" begin
     
@@ -26,7 +24,7 @@ import SynergisticGaussianSystems._vec_to_cov
     @test total_correlation_gaussian(Σ) - 1.416806712038779 < 10^(-12)
     @test O_information_gaussian(Σ) - (-1.736742694823721) < 10^(-12)
 
-    # test multivariate N = 4 process (synthetic data)
+    # test multivariate N = 4 process (synthetic data generated using MvNormal)
     local Σ = _vec_to_cov([.4,.4,.4,-.2,-.1,-.4]);
     local X = rand(MvNormal(zeros(size(Σ)[1]), Σ), 1000000);
     # true values computed analytically in Mathematica
