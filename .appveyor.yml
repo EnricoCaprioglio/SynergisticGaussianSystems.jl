@@ -1,5 +1,7 @@
 # Documentation: https://github.com/JuliaCI/Appveyor.jl
 environment:
+  my_variable:
+    secure: 3wOFkOfbSJiJ1XDrrjdfGcP6AIQs8eyitPJfhAGf7q0uo0260hQmjx98W9fINp8D
   matrix:
     - julia_version: 1.11
     # - julia_version: 1.6
@@ -23,11 +25,14 @@ notifications:
 install:
   - ps: iex ((new-object net.webclient).DownloadString("https://raw.githubusercontent.com/JuliaCI/Appveyor.jl/version-1/bin/install.ps1"))
 build_script:
+  - julia --code-coverage test/runtests.jl
   - echo "%JL_BUILD_SCRIPT%"
   - C:\julia\bin\julia -e "%JL_BUILD_SCRIPT%"
 test_script:
   - echo "%JL_TEST_SCRIPT%"
   - C:\julia\bin\julia -e "%JL_TEST_SCRIPT%"
+after_test:
+  - C:\julia\bin\julia -e "using Pkg; Pkg.add(\"Coverage\"); using Coverage; Coveralls.submit(process_folder())"
 on_success:
   - echo "%JL_CODECOV_SCRIPT%"
   - C:\julia\bin\julia -e "%JL_CODECOV_SCRIPT%"
